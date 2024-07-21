@@ -36,6 +36,7 @@ void input(std::vector<std::vector<double>> &data, std::vector<double> &expected
         }
 	}
 	
+    //Displaying image
 	//std::cout << "Image:" << std::endl;
 	//for (int j = 1; j <= height; ++j) {
 	//	for (int i = 1; i <= width; ++i) {
@@ -44,6 +45,7 @@ void input(std::vector<std::vector<double>> &data, std::vector<double> &expected
 	//	std::cout << std::endl;
 	//}
     
+    //Reading image
     for (int j = 1; j <= height; ++j) {
         for (int i = 1; i <= width; ++i) {
             int pos = i + (j - 1) * width;

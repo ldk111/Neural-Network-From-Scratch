@@ -46,28 +46,32 @@ double NeuralNetwork::test(NeuralNetwork & nn, const std::vector<Matrix> & input
     
     for (int i = 0; i < input_matrix.size(); i++) {
     
-    Matrix input = input_matrix[i];
-    Matrix expected = output_matrix[i];
-    
-    Matrix& outputs = nn.forward(input);
-    double max = 0;
-    int val;
-    int true_val;
-    for (int j = 0; j < 10; j++) {
-        if (outputs.at(0, j) > max) {
-            max = outputs.at(0, j);
-            val = j;
+        Matrix input = input_matrix[i];
+        Matrix expected = output_matrix[i];
+        
+        Matrix& outputs = nn.forward(input);
+
+        double max = 0;
+        int val;
+        int true_val;
+
+        for (int j = 0; j < 10; j++) {
+            if (outputs.at(0, j) > max) {
+                max = outputs.at(0, j);
+                val = j;
+                };
+            if (expected.at(0, j) == 1.0) {
+                true_val = j;
+                };
             };
-        if (expected.at(0, j) == 1.0) {
-            true_val = j;
+
+        //printf("Max: %.4f\n", max);
+        //std::cout << val << std::endl;
+        //std::cout << true_val<< std::endl;
+        
+        if (val == true_val) {
+            count += 1;
         };
-        };
-    //printf("Max: %.4f\n", max);
-    //std::cout << val << std::endl;
-    //std::cout << true_val<< std::endl;
-    if (val == true_val) {
-        count += 1;
-    };
     };
     return count/(float)(input_matrix.size()+1);
 }
@@ -96,7 +100,7 @@ Matrix & NeuralNetwork::forward(const Matrix & input) {
     for (int i = 1; i < layers.size(); i++) {
         Layer & curr = layers[i];
         Layer & prev = layers[i - 1];
-        ::forward_layer(curr, prev);
+        forward_layer(curr, prev);
     };
 
     return layers[layers.size() - 1].outputs;

@@ -144,13 +144,9 @@ Matrix Matrix::operator-(const Matrix& other) const {
 
 Matrix Matrix::operator*(const Matrix& other) const {
 
-  // (r1 x c1) * (r2 x c2) =>
-  //   assert(c1 == r2), result = (r1 x c2)
-  //assert(this->_cols == other._rows);
-
   Matrix m(this->_rows, other._cols);
 
-  int n = _cols; // Width or a row.
+  int n = _cols; // Width of a row.
   for (int r = 0; r < m._rows; r++) {
     for (int c = 0; c < m._cols; c++) {
 

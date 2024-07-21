@@ -7,16 +7,16 @@
 #include "data.hpp"
 
 // Training image file name
-const std::string training_image_fn = "dataset/train-images.idx3-ubyte";
+const std::string training_image = "dataset/train-images.idx3-ubyte";
 
 // Training label file name
-const std::string training_label_fn = "dataset/train-labels.idx1-ubyte";
+const std::string training_label = "dataset/train-labels.idx1-ubyte";
 
 // Testing image file name
-const std::string testing_image_fn = "dataset/t10k-images.idx3-ubyte";
+const std::string testing_image = "dataset/t10k-images.idx3-ubyte";
 
 // Testing label file name
-const std::string testing_label_fn = "dataset/t10k-labels.idx1-ubyte";
+const std::string testing_label = "dataset/t10k-labels.idx1-ubyte";
 
 int main(int argc, char *argv[]){
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]){
     std::vector<Matrix> input_matrix_train;
     std::vector<Matrix> output_matrix_train;
     
-    read_data(training_image_fn, training_label_fn, 60000, input_matrix_train, output_matrix_train);
+    read_data(training_image, training_label, 60000, input_matrix_train, output_matrix_train);
 
     // Create layers.
     Layer input_layer(784);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[]){
     std::vector<Matrix> input_matrix_test;
     std::vector<Matrix> output_matrix_test;
 
-    read_data(testing_image_fn, testing_label_fn, 10000, input_matrix_test, output_matrix_test);
+    read_data(testing_image, testing_label, 10000, input_matrix_test, output_matrix_test);
 
     printf("Percentage Accuracy: %.4f\n", nn.test(nn, input_matrix_test, output_matrix_test));
 
