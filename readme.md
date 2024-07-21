@@ -1,4 +1,4 @@
-##Multi-Layer Perceptron Neural Network with C++ Standard Libraries
+## Multi-Layer Perceptron Neural Network with C++ Standard Libraries
 
 This is a project I have developed to help me better understand both C++ and neural networks. 
 
